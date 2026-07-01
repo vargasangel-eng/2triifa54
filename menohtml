@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acessibilidade Digital e Simulador de Visão - Ótica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header role="banner">
+        <h1>Portal de Acessibilidade e Saúde Visual</h1>
+        <p>Ajuste os parâmetros da página ou simule filtros de lentes e condições clínicas de visão abaixo.</p>
+    </header>
+
+    <main class="main-container">
+        
+        <aside class="control-panel" aria-label="Painel de Controle de Acessibilidade">
+            
+            <div class="panel-section">
+                <h2>1. Ferramentas de Leitura</h2>
+                <div class="button-group">
+                    <button id="btn-zoom-in" aria-label="Aumentar o tamanho do texto">Aumentar Texto (A+)</button>
+                    <button id="btn-zoom-out" aria-label="Diminuir o tamanho do texto">Diminuir Texto (A-)</button>
+                    <button id="btn-contrast" aria-label="Alternar modo de alto contraste">Alto Contraste</button>
+                </div>
+            </div>
+
+            <div class="panel-section">
+                <h2>2. Simulador de Filtros Óticos (Lentes)</h2>
+                <label for="select-lens">Escolha um tipo de lente para aplicar:</label>
+                <select id="select-lens">
+                    <option value="lens-normal">Lente Transparente Padrão</option>
+                    <option value="lens-solar">Lente Solar (Proteção UV / Escura)</option>
+                    <option value="lens-amber">Lente Âmbar (Filtro de Luz Azul / Direção Night)</option>
+                </select>
+            </div>
+
+            <div class="panel-section">
+                <h2>3. Simulador de Condições Visuais</h2>
+                <label for="select-condition">Simular patologia ou daltonismo:</label>
+                <select id="select-condition">
+                    <option value="cond-normal">Visão Saudável</option>
+                    <option value="cond-blur">Baixa Visão / Catarata (Visão Turva)</option>
+                    <option value="cond-protanopia">Daltonismo: Protanopia (Ausência de Vermelho)</option>
+                    <option value="cond-deuteranopia">Daltonismo: Deuteranopia (Ausência de Verde)</option>
+                    <option value="cond-tritanopia">Daltonismo: Tritanopia (Ausência de Azul)</option>
+                </select>
+            </div>
+
+        </aside>
+
+        <section class="display-area" aria-label="Vitrine de Simulação Visual">
+            <h2>Vitrine de Teste Visual</h2>
+            <p>Observe as alterações cromáticas, de nitidez e de iluminação no card abaixo ao interagir com o painel lateral.</p>
+            
+            <div id="simulation-viewport" class="simulation-box">
+                <div class="product-card">
+                    <div class="spectrum-test-bar" aria-hidden="true"></div>
+                    <div class="product-info">
+                        <span class="tag">Lançamento Premium</span>
+                        <h3>Armação de Acetato Classic Elegance</h3>
+                        <p>Modelo ergonômico projetado para lentes multifocais de alta definição. Ideal para testes de sensibilidade ao contraste e distinção de matizes cromáticos.</p>
+                        <div class="color-options">
+                            <span class="color-dot red" title="Opção Vermelho Coral"></span>
+                            <span class="color-dot green" title="Opção Verde Oliva"></span>
+                            <span class="color-dot blue" title="Opção Azul Marinho"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer role="contentinfo">
+        <p>&copy; 2026 Ótica e Visão Acessível. Desenvolvido com foco em inclusão digital segundo diretrizes WCAG.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
