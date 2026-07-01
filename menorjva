@@ -1,0 +1,67 @@
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Captura de referências do DOM
+    const btnZoomIn = document.getElementById('btn-zoom-in');
+    const btnZoomOut = document.getElementById('btn-zoom-out');
+    const btnContrast = document.getElementById('btn-contrast');
+    const selectLens = document.getElementById('select-lens');
+    const selectCondition = document.getElementById('select-condition');
+    const simulationViewport = document.getElementById('simulation-viewport');
+
+    // Variável de controle do tamanho base da fonte (Zoom)
+    let baseFontSize = 16;
+    const maxFontSize = 26;
+    const minFontSize = 12;
+
+    // 1. GERENCIAMENTO DE ACESSIBILIDADE INTERNA (Ajustes de leitura)
+
+    // Aumentar Fonte
+    btnZoomIn.addEventListener('click', () => {
+        if (baseFontSize < maxFontSize) {
+            baseFontSize += 2;
+            document.documentElement.style.setProperty('--font-scale', `${baseFontSize}px`);
+        }
+    });
+
+    // Diminuir Fonte
+    btnZoomOut.addEventListener('click', () => {
+        if (baseFontSize > minFontSize) {
+            baseFontSize -= 2;
+            document.documentElement.style.setProperty('--font-scale', `${baseFontSize}px`);
+        }
+    });
+
+    // Chaveador de Alto Contraste
+    btnContrast.addEventListener('click', () => {
+        document.body.classList.toggle('high-contrast-mode');
+        const isActive = document.body.classList.contains('high-contrast-mode');
+        btnContrast.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+
+    // 2. SISTEMA DE SIMULAÇÃO VISUAL COMBINADA (Filtros e Doenças)
+
+    // Função unificada para aplicar os filtros ativos na viewport
+    function updateSimulationFilters() {
+        const activeLens = selectLens.value;
+        const activeCondition = selectCondition.value;
+
+        // Limpa todas as classes temporárias de simulação da viewport
+        simulationViewport.className = 'simulation-box';
+
+        // Adiciona a classe da lente se for diferente de normal
+        if (activeLens !== 'lens-normal') {
+            simulationViewport.classList.add(activeLens);
+        }
+
+        // Adiciona a classe da patologia se for diferente de normal
+        if (activeCondition !== 'cond-normal') {
+            simulationViewport.classList.add(activeCondition);
+        }
+    }
+
+    // Ouvintes para os elementos selects
+    selectLens.addEventListener('change', updateSimulationFilters);
+    selectCondition.addEventListener('change', updateSimulationFilters);
+
+});
